@@ -3,7 +3,10 @@
  <el-container>
    <!-- 先左右布局，侧边栏容器 -->
    <!-- 左侧 -->
-   <el-aside></el-aside>
+   <el-aside style = 'background-color:#353b4e; height:100vh; width:230px'>
+     <!-- <zuocedaohang>放置了一个左侧组件 -->
+     <zuocedaohang></zuocedaohang>
+   </el-aside>
    <!-- 右侧再放置一个container因为右侧有是一个整体 -->
    <!-- 右侧 -->
    <el-container>
@@ -19,7 +22,13 @@
 </template>
 
 <script>
-export default {}
+// 把左边导航引进来
+import daohang from '../../components/home/zuocedaohang'
+export default {
+  components: {
+    'zuocedaohang': daohang
+  }
+}
 </script>
 <style >
 
