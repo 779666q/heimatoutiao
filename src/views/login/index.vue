@@ -8,7 +8,7 @@
         <!-- 登录表单 -->
         <!-- 表单容器 -->
         <!-- rules属性绑定验证规则对象 -->
-        <el-form style="margin-top:20px" :model="loginForm" :rules="loginreles">
+        <el-form style="margin-top:20px" :model="loginForm" :rules="loginreles" ref = 'myForm'>
             <!-- 表单域一行 -->
             <el-form-item prop="mobile">
                 <!-- 再放入表单框 -->
@@ -28,7 +28,8 @@
                 </el-checkbox>
             </el-form-item>
             <el-form-item>
-                <el-button style="width:100%" type="primary">登录</el-button>
+              <!-- 在登录的时候注册一个点击事件 -->
+                <el-button style="width:100%" type="primary" @click= "submitLogin">登录</el-button>
             </el-form-item>
         </el-form>]
       </el-card>
@@ -66,6 +67,34 @@ export default {
         } }]
         // check是自定义函数他有三个参数第一个是rule，value，callback（value，指得就是要校验的值，此时要校验的值就是check就是那个小框）
       }
+    }
+  },
+  methods: {
+    // 提交登录的表单
+    submitLogin () {
+      // 直接el-form获取到实例,此时的这个实例哟个方法.validate这个是方法要加（）
+      this.$refs.myForm.validate((isok) => {
+        if (isok) {
+          // 前端效验成功this.$axios()给个括号也行，也是个方法
+          this.$axios({
+            url: '/authorizations', // 请求个地址
+            method: 'post',
+            data: this.loginForm
+            // 上面这行代码不明白
+          }).then(result => {
+            window.localStorage.setItem('user-token', result.data.data.toke)// 这段话意思就是我的药匙，令牌，放在window里保存
+            this.$router.push('/home')
+            // 这个是成功以后就会进入到此
+          }).catch(() => {
+            // 这个是不成功就进入到此
+            // 这个message提示信息是从element里来的
+            this.$message({
+              message: '你手机号不对！操！抓紧改！他妈了个巴子的！也有可能验证码不对昂。',
+              type: 'warning'
+            })
+          })
+        }
+      })
     }
   }
 }
