@@ -13,6 +13,7 @@
      <!-- 上下布局 -->
      <el-header>
        <!-- 头部 -->
+       <biaotou></biaotou>
      </el-header>
      <el-main>
       <!-- 主要区域 -->
@@ -24,9 +25,11 @@
 <script>
 // 把左边导航引进来
 import daohang from '../../components/home/zuocedaohang'
+import toubu from '../../components/home/header'
 export default {
   components: {
-    'zuocedaohang': daohang
+    'zuocedaohang': daohang,
+    'biaotou': toubu
   }
 }
 </script>
