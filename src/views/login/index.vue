@@ -44,10 +44,10 @@ export default {
       // 定义一个表单数据对象
       loginForm: {
         //   手机号
-        mobile: '',
+        mobile: '13911111111',
         // 验证码
-        code: '',
-        check: false
+        code: '246810',
+        check: true
         // check意思就是小框是否勾选
       },
       loginreles: {
@@ -72,8 +72,10 @@ export default {
   methods: {
     // 提交登录的表单
     submitLogin () {
+      // console.log(11)
       // 直接el-form获取到实例,此时的这个实例哟个方法.validate这个是方法要加（）
       this.$refs.myForm.validate((isok) => {
+        // console.log(1)
         if (isok) {
           // 前端效验成功this.$axios()给个括号也行，也是个方法
           this.$axios({
@@ -82,7 +84,8 @@ export default {
             data: this.loginForm
             // 上面这行代码不明白
           }).then(result => {
-            window.localStorage.setItem('user-token', result.data.data.toke)// 这段话意思就是我的药匙，令牌，放在window里保存
+            console.log(result.data.data.token)
+            window.localStorage.setItem('user-token', result.data.data.token)// 这段话意思就是我的药匙，令牌，放在window里保存
             this.$router.push('/home')
             // 这个是成功以后就会进入到此
           }).catch(() => {
@@ -110,7 +113,7 @@ export default {
     justify-content: center;
     // 水平居中
     align-items: center;
-    // 父级居中
+    // 父级居中gf
 .login-card{
     width: 440px;
     height:350px;

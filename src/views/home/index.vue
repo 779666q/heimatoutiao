@@ -5,7 +5,7 @@
    <!-- 左侧 -->
    <el-aside style = 'background-color:#353b4e; height:100vh; width:230px'>
      <!-- <zuocedaohang>放置了一个左侧组件 -->
-     <zuocedaohang></zuocedaohang>
+       <layout-header></layout-header>
    </el-aside>
    <!-- 右侧再放置一个container因为右侧有是一个整体 -->
    <!-- 右侧 -->
@@ -13,7 +13,7 @@
      <!-- 上下布局 -->
      <el-header>
        <!-- 头部 -->
-       <biaotou></biaotou>
+       <layout-aside></layout-aside>
      </el-header>
      <el-main>
       <!-- 主要区域 -->
@@ -21,16 +21,9 @@
    </el-container>
  </el-container>
 </template>
-
 <script>
-// 把左边导航引进来
-import daohang from '../../components/home/zuocedaohang'
-import toubu from '../../components/home/header'
 export default {
-  components: {
-    'zuocedaohang': daohang,
-    'biaotou': toubu
-  }
+
 }
 </script>
 <style >
