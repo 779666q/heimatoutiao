@@ -38,13 +38,10 @@ export default {
     }
   },
   created () {
-    let token = window.localStorage.getItem('user-token') // 这一步是获取令牌
     // 这里面是查询数据
     this.$axios({
-      url: '/user/profile',
-      headers: {
-        Authorization: `Bearer ${token}` // 这个不是引号，是模板字符串
-      }
+      url: '/user/profile'
+
     }).then(result => {
       this.userInfo = result.data.data // 获取个人信息
     })
