@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/home'
 import Login from '../views/login'
 import Home2 from '../views/home/tome'
+// import Commont from '../views/comment/'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
     children: [{
       path: '',
       component: Home2
+    }, {
+      // 二级路由表
+      path: 'comment',
+      component: () => import('../views/comment/index.vue')
     }]
   }, {
     path: '/login',

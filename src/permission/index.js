@@ -2,8 +2,9 @@
 import router from '../router'
 // 全局前置守卫
 router.beforeEach(function (to, form, next) {
+  // console.log(to)
   // 我要去拦截谁 判断我的拦截地址
-//   startswith，是以什么什么为开头的意思
+  //   startswith，是以什么什么为开头的意思
   if (to.path !== '/login') {
     // 进行权限判断，判断有误token，如果有就直接放过，如果没有让他直接返回登录页
     //   取到我的token
